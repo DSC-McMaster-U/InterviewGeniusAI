@@ -1,0 +1,49 @@
+frontend/                    
+│
+├── src/
+│   ├── components/
+│   │   ├── UserInputComponent.js    
+│   │   ├── FeedbackComponent.js     
+│   │   ├── ResponseComponent.js
+│   ├── pages/
+│   │   ├── HomePage.js              # Homepage
+│   │   ├── InterviewPage.js         # Interview question page
+│   │   ├── LoginPage.js             # Login/Authentication page
+│   ├── services/
+│   │   ├── api.js                   # API service connecting to backend
+│   │   ├── authService.js           # Handles user authentication
+│   ├── assets/                      # for images and stylesheets, css
+│   ├── utils/                       
+│   │   ├── validator.js            # Validation 
+│   ├── index.js                     # entry point
+│   ├── App.js                       #  App component
+│
+|   .gitignore
+├── package.json                   
+├── .env                      
+
+├── backend
+│   ├── app
+│   │   ├── models            # Database models for users, questions, feedback
+│   │   ├── views              # Request handlers and API endpoints
+│       ├── controllers           # Controllers handling the business logic for API requests
+    │   │   ├── prompt_controller.py   # Handles requests related to prompt generation
+    │   │   ├── response_controller.py # Handles requests related to response submission
+    │   │   └── feedback_controller.py # Handles requests related to feedback generation
+│   │   ├── services           # Services for handling logic
+│   │   │   ├── prompt_service.py      # Service for generating interview prompts using Vertex AI
+│   │   │   ├── response_service.py    # Service for processing user responses
+│   │   │   └── feedback_service.py   
+    │   ├── middleware              # Middleware functions for request/response processing
+    │   │   ├── auth_middleware.py     # Middleware for user authentication and authorization
+    │   │   ├── validation_middleware.py # Middleware for validating request data
+│   │   ├── tests             # Backend tests 
+│   │   └── utils              
+│   ├── data       
+
+
+│   ├── scripts                 
+│   ├── migrations             
+│   ├── requirements.txt         
+│   └── .env                     # Backend environment variables 
+│
