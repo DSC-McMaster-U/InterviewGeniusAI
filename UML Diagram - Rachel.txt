@@ -1,0 +1,55 @@
++------------------------------------------------------+
+|                   Root Repository                    |
++------------------------------------------------------+
+|                                                      |
+|  1. frontend/                                        |
+|     +------------------------------+                 |
+|     | index.js                      |                 |
+|     | App.js                        |                 |
+|     | components/                   |                 |
+|     |   - UserInputComponent.js     |                 |
+|     |   - FeedbackComponent.js      |                 |
+|     |   - AudioResponseComponent.js |                 |
+|     | pages/                        |                 |
+|     |   - HomePage.js               |                 |
+|     |   - InterviewPage.js          |                 |
+|     |   - LoginPage.js              |                 |
+|     +------------------------------+                 |
+|                                                      |
+|  2. backend/                                         |
+|     +------------------------------+                 |
+|     | app.py                        |                 |
+|     | models/                       |                 |
+|     |   - user_model.py             |                 |
+|     |   - interview_model.py        |                 |
+|     | services/                     |                 |
+|     |   - prompt_service.py         | (Call Vertex AI)|
+|     |   - feedback_service.py       | (Feedback Logic)|
+|     |   - audio_service.py          | (Audio Handling)|
+|     | controllers/                  |                 |
+|     |   - interview_controller.py   | (API for Frontend)|
+|     | utils/                        |                 |
+|     |   - db_connection.py          | (Database setup)|
+|     +------------------------------+                 |
+|                                                      |
+|  3. docs/                                            |
+|     +------------------------------+                 |
+|     | ProjectDescription.md         |                 |
+|     | ImplementationPlan.md         |                 |
+|     | TeamManagement.md             |                 |
+|     +------------------------------+                 |
+|                                                      |
+|  4. tests/                                           |
+|     +------------------------------+                 |
+|     | frontend_tests/               | (Integration tests)|
+|     |   - test_ui_components.py     |                 |
+|     | backend_tests/                | (Unit tests)    |
+|     |   - test_interview_endpoints.py|                 |
+|     +------------------------------+                 |
+|                                                      |
+|  5. ci-cd/                                           |
+|     +------------------------------+                 |
+|     | github-actions.yml            |                 |
+|     | jenkins-pipeline.groovy       |                 |
+|     +------------------------------+                 |
++------------------------------------------------------+
