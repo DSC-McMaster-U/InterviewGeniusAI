@@ -1,0 +1,20 @@
+Position: Software Engineer
+
+Company: DataInsights
+
+Job Summary:
+We are seeking a skilled Software Engineer to join our team. 
+The successful candidate will have experience in full-stack development and a passion for solving complex problems. 
+This role involves working with modern frameworks, debugging, and collaborating with cross-functional teams.
+
+Requirements:
+- Bachelor’s degree in Computer Science or related field
+- 3+ years of experience in software development
+- Proficiency in JavaScript, React, Node.js, and SQL
+- Familiarity with Agile methodologies and CI/CD tools
+
+Responsibilities:
+- Design and implement scalable software applications.
+- Troubleshoot and debug code to ensure smooth user experiences.
+- Collaborate with the product team to identify and address software issues.
+- Participate in code reviews and contribute to team learning.
