@@ -1,0 +1,19 @@
+Position: Data Analyst
+
+Company: IBM
+
+Job Summary:
+IBM is looking for a Data Analyst to turn data into information and insights that help improve business outcomes. 
+The ideal candidate will have experience in statistical analysis, data mining, and creating reports.
+
+Requirements:
+- Bachelor’s degree in Statistics, Data Science, or a related field
+- 2+ years of experience as a data analyst
+- Proficiency in R, Python, SQL, and data visualization tools (Tableau, Power BI, Azure)
+- Strong analytical and problem-solving skills
+
+Responsibilities:
+- Collect and analyze data to identify patterns and trends.
+- Develop and maintain dashboards and reports for various business functions.
+- Collaborate with stakeholders to understand data requirements and deliver insights.
+- Apply statistical techniques to interpret data and provide actionable recommendations.
