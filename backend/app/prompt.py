@@ -1,4 +1,5 @@
 import os
+import logging
 
 class PromptAppender:
     def __init__(self, cleaned_data: dict, prompt_file: str):
@@ -16,7 +17,6 @@ class PromptAppender:
     def append_prompt(self) -> dict:
         prompt_text = self.load_prompt()
         
-        # Combine cleaned resumes and job descriptions with the prompt
         combined_data = {
             "resumes": [],
             "job_descriptions": []
@@ -28,4 +28,5 @@ class PromptAppender:
         for job_desc in self.cleaned_data['job_descriptions']:
             combined_data['job_descriptions'].append(job_desc['content'] + " " + prompt_text)
 
+        logging.info("Prompt appended to cleaned resumes and job descriptions.")
         return combined_data
