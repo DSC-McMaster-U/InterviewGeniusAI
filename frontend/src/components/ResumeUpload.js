@@ -1,62 +1,64 @@
 import React, { useState } from "react";
+import { submitUserInput } from "../api.js";
 
-function ResumeUpload() {
-  const [resume, setResume] = useState('');
-  const [jobDescription, setJobDescription] = useState('');
+const ResumeUpload = () => {
+  const [resumeDetails, setResumeDetails] = useState("");
+  const [jobDescription, setJobDescription] = useState("");
+  const [response, setResponse] = useState(null);
 
-  const handleResumeUpload = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Placeholder logic for submitting resume
-    console.log("Resume uploaded:", resume);
-  };
+    // Get the name of the button that was clicked
+    const { name } = e.nativeEvent.submitter;
 
-  const handleJobUpload = (e) => {
-    e.preventDefault();
+    let dataToSend; // Declare a variable to hold the data to send
 
-    // Placeholder logic for submitting job description
-    console.log("Job Description uploaded:", jobDescription);
+    // Use if statements to determine what data to send
+    if (name === "upload-resume") {
+        dataToSend = { resumeDetails }; // If the resume button was clicked, send resume data
+    } else if (name === "upload-job-description") {
+        dataToSend = { jobDescription }; // If the job description button was clicked, send job description data
     }
 
-    const handleInputChange = (e) => {
-      const { name, value } = e.target;
-      if (name === "resume-content") {
-        setResume(value);
-      } else if (name === "job-description") {
-        setJobDescription(value);
-      }
-    };
-
-    return (
-      <div>
-        <h2>Resume Upload</h2>
-        <form onSubmit={handleResumeUpload}>
-          <p> Enter resume context below:</p>
-            <textarea
-              name="resume-content"
-              value={resume}
-              onChange={handleInputChange}
-              placeholder="Resume Text"
-              rows={5}
-              cols={40}
-            />
-          <button type="submit">Upload Resume</button>
-        </form>
-
-        <form onSubmit={handleJobUpload}>
-          <p> Enter job description below:</p>
-            <textarea
-              name="job-description"
-              value={jobDescription}
-              onChange={handleInputChange}
-              placeholder="Job Description Text"
-              rows={5}
-              cols={40}
-            />
-          <button type="submit">Upload Job Description</button>
-      </form>
-      </div>
-    );
+    try {
+        const result = await submitUserInput(dataToSend);
+        setResponse(result); // Handle response from the backend
+    } catch (error) {
+      console.error("Resume upload failed:", error);
+    }
   };
+
+  return (
+    <div>
+      <h1>Upload Resume</h1>
+      <form onSubmit={handleSubmit}>
+        <p> Enter resume context below:</p>
+        <textarea
+        name="resume-content"
+          value={resumeDetails}
+          onChange={(e) => setResumeDetails(e.target.value)}
+          placeholder="Resume Details"
+          required
+          rows={5}
+          cols={40}
+        />
+        <button type="submit" name="upload-resume">Upload Resume</button>
+
+        <p> Enter job description below:</p>
+        <textarea
+          name="job-description"
+          value={jobDescription}
+          onChange={(e) => setJobDescription(e.target.value)}
+          placeholder="Job Description"
+          rows={5}
+          cols={40}
+        />
+        <button type="submit" name="upload-job-description">Upload Job Description</button>
+      </form>
+      {response && <p>Response from backend: {JSON.stringify(response)}</p>}
+    </div>
+  );
+};
 
 export default ResumeUpload;
