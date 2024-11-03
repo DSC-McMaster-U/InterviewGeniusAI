@@ -1,0 +1,23 @@
+Name: Alex Johnson
+Contact: alex.johnson@email.com | (555) 123-4567
+
+Professional Summary:
+Dynamic software engineer with 5+ years of experience in developing robust code for high-volume businesses. Proficient in full-stack development, Agile methodologies, and collaborative team projects. Passionate about building scalable software solutions.
+
+Skills:
+- Programming: JavaScript, Python, Java, SQL
+- Web Development: React, Node.js, HTML/CSS
+- Tools: Git, Docker, Jenkins, AWS
+
+Experience:
+1. Software Engineer, Tech Solutions Inc. (2019–Present)
+   - Developed scalable web applications, improving customer engagement by 30%.
+   - Collaborated with a cross-functional team to implement new features and troubleshoot code.
+
+2. Junior Developer, Web Innovators (2017–2019)
+   - Built responsive front-end designs for multiple e-commerce websites.
+   - Optimized backend functions, decreasing load times by 20%.
+
+Education:
+B.S. in Computer Science
+University of California, Berkeley
