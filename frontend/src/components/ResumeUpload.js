@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { submitUserInput } from "../api.js";
+import ResumeContentForm from "./ResumeContentForm"; 
+import JobDescriptionForm from "./JobDescriptionForm";
 
 const ResumeUpload = () => {
   const [resumeDetails, setResumeDetails] = useState("");
@@ -33,29 +35,19 @@ const ResumeUpload = () => {
     <div>
       <h1>Upload Resume</h1>
       <form onSubmit={handleSubmit}>
-        <p> Enter resume context below:</p>
-        <textarea
-        name="resume-content"
-          value={resumeDetails}
-          onChange={(e) => setResumeDetails(e.target.value)}
-          placeholder="Resume Details"
-          required
-          rows={5}
-          cols={40}
+        <ResumeContentForm 
+          resumeDetails={resumeDetails}
+          setResumeDetails={setResumeDetails} 
         />
         <button type="submit" name="upload-resume">Upload Resume</button>
 
-        <p> Enter job description below:</p>
-        <textarea
-          name="job-description"
-          value={jobDescription}
-          onChange={(e) => setJobDescription(e.target.value)}
-          placeholder="Job Description"
-          rows={5}
-          cols={40}
+        <JobDescriptionForm 
+          jobDescription={jobDescription}
+          setJobDescription={setJobDescription} 
         />
         <button type="submit" name="upload-job-description">Upload Job Description</button>
       </form>
+      
       {response && <p>Response from backend: {JSON.stringify(response)}</p>}
     </div>
   );
