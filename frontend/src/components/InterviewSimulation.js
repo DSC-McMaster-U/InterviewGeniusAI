@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
-import { submitUserInput } from './api';
+import { submitFeedback } from './Feedback'; 
 
 const InterviewSimulation = () => {
   const [interviewFeedback, setInterviewFeedback] = useState('');
   const [response, setResponse] = useState(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    const userData = { feedback: interviewFeedback };
-
-    try {
-      const result = await submitUserInput(userData);
-      setResponse(result); // Handle response from the backend
-    } catch (error) {
-      console.error('Feedback submission failed:', error);
-    }
+    submitFeedback(interviewFeedback, setResponse);
   };
 
   return (

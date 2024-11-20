@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { submitUserInput } from "../api.js";
+import { submitResumeOrJobDescription } from "./Submissions.js";
 
 const ResumeUpload = () => {
   const [resumeDetails, setResumeDetails] = useState("");
@@ -21,12 +21,8 @@ const ResumeUpload = () => {
         dataToSend = { jobDescription }; // If the job description button was clicked, send job description data
     }
 
-    try {
-        const result = await submitUserInput(dataToSend);
-        setResponse(result); // Handle response from the backend
-    } catch (error) {
-      console.error("Resume upload failed:", error);
-    }
+    submitResumeOrJobDescription(dataToSend, setResponse);
+
   };
 
   return (
