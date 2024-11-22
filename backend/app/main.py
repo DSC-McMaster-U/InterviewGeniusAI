@@ -1,33 +1,31 @@
 import logging
-from services.api import DataFetcherAPI
+from models.resume_data_cleaner import ResumeDataCleaner
+from prompt import PromptAppender
 
-class Orchestrator:
-    def process_data(self, cleaned_resumes, cleaned_job_descriptions):
-        logging.info(f"Processing {len(cleaned_resumes)} resumes and {len(cleaned_job_descriptions)} job descriptions.")
-        # Add additional processing logic here
-        for resume in cleaned_resumes:
-            logging.info(f"Cleaned Resume: {resume['content']}")
-        for job_desc in cleaned_job_descriptions:
-            logging.info(f"Cleaned Job Description: {job_desc['content']}")
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def main():
-    logging.basicConfig(level=logging.INFO)
+    # Paths for resumes, job descriptions, and the prompt file
+    resume_dir = 'data/sample_resumes/'
+    job_desc_dir = 'data/job_descriptions/'
+    prompt_file = 'data/prompt.txt'
 
-    api = DataFetcherAPI()
-    try:
-        data = api.fetch_data()
-        if 'resumes' in data and 'job_descriptions' in data:
-            cleaned_resumes = data['resumes']
-            cleaned_job_descriptions = data['job_descriptions']
+    # Create an instance of ResumeDataCleaner
+    cleaner = ResumeDataCleaner(resume_dir, job_desc_dir)
+    cleaned_data = cleaner.process_data()
 
-            logging.info(f"Fetched data successfully: {len(cleaned_resumes)} resumes and {len(cleaned_job_descriptions)} job descriptions.")
+    # Create an instance of PromptAppender 
+    prompt_appender = PromptAppender(cleaned_data, prompt_file)
+    final_data = prompt_appender.append_prompt()
+    
+    # Log the final appended data for verification
+    logging.info("Final Appended Resumes:")
+    for resume in final_data['resumes']:
+        logging.info(resume)
+    
+    logging.info("\nFinal Appended Job Descriptions:")
+    for job_desc in final_data['job_descriptions']:
+        logging.info(job_desc)
 
-            orchestrator = Orchestrator()
-            orchestrator.process_data(cleaned_resumes, cleaned_job_descriptions)
-        else:
-            logging.error("Fetched data does not contain expected keys.")
-    except Exception as e:
-        logging.error("Error fetching data: %s", e)
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
