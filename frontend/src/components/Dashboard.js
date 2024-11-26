@@ -14,7 +14,7 @@ function Dashboard() {
             setUserData(data);  // Set user data in state
         };
         fetchData();
-    }, []);  // Empty dependency array ensures this runs once when the component mounts
+     }, []);  // Empty dependency array makes sure it runs once when component mounts
 
     return (
         <div>
