@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import UserInfo from './components/UserInfo';  // Importing UserInfo component
+import UserInfo from './components/UserInfo';  
 
 function Dashboard() {
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
-            // Fetch user data from an API or service
             const data = {
                 name: 'John Doe',
                 role: 'Admin',
@@ -24,7 +23,7 @@ function Dashboard() {
             {userData ? (
                 <UserInfo userData={userData} />
             ) : (
-                <p>Loading user data...</p>  // Show loading message if userData is null
+                <p>Loading user data...</p>  
             )}
         </div>
     );
