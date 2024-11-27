@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { submitUserInput } from './api';
-
+import { submitUserInput } from '../api';
 const Dashboard = () => {
   const [inputText, setInputText] = useState('');
   const [response, setResponse] = useState(null);

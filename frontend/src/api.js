@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/submit'; // backend URL for the API endpoint
+const API_URL = 'http://localhost:3000/api/submit'; // backend URL for the API endpoint
 
 /**
  * Submits user input data to the backend.

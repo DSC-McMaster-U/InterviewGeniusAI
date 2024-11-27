@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { submitUserInput } from './services/apiService';
+import { submitUserInput } from '../api';
 
 const Authentication = () => {
   // State for managing username, password input fields and the response message
