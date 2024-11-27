@@ -1,39 +1,32 @@
-import React, { useState } from 'react';
-import { submitUserInput } from './api';
+import React, { useEffect, useState } from 'react';
+import UserInfo from './components/UserInfo';  
 
-const Dashboard = () => {
-  const [inputText, setInputText] = useState('');
-  const [response, setResponse] = useState(null);
+function Dashboard() {
+    const [userData, setUserData] = useState(null);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = {
+                name: 'John Doe',
+                role: 'Admin',
+                lastLogin: '2024-11-24',
+            };
+            setUserData(data);  // Set user data in state
+        };
+        fetchData();
+     }, []);  // Empty dependency array makes sure it runs once when component mounts
 
-    const userData = { text: inputText };
-
-    try {
-      const result = await submitUserInput(userData);
-      setResponse(result); // Handle response from the backend
-    } catch (error) {
-      console.error('Submission failed:', error);
-    }
-  };
-
-  return (
-    <div>
-      <h1>Dashboard</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          placeholder="Enter your text"
-          required
-        />
-        <button type="submit">Submit</button>
-      </form>
-      {response && <p>Response from backend: {JSON.stringify(response)}</p>}
-    </div>
-  );
-};
+    return (
+        <div>
+            <h2>Dashboard</h2>
+            {/* If userData exists, pass it to UserInfo component */}
+            {userData ? (
+                <UserInfo userData={userData} />
+            ) : (
+                <p>Loading user data...</p>  
+            )}
+        </div>
+    );
+}
 
 export default Dashboard;
