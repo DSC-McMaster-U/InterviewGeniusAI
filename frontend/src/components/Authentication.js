@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import { submitUserInput } from '../api';
-=======
-import { submitUserInput } from './services/apiService';
-import AuthenticationForm from './src/AuthenticationForm';
->>>>>>> upstream/main
+import AuthenticationForm from '../AuthenticationForm';
 
 const Authentication = () => {
   // State for managing username, password input fields and the response message
