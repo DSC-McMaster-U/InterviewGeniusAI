@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { submitUserInput } from "../api.js";
-import ResumeContentForm from "./ResumeContentForm"; 
+import { submitUserInput } from "../api";
+// import ResumeContentForm from "./ResumeContentForm"; 
 import JobDescriptionForm from "./JobDescriptionForm";
+import ResumeContentForm from "./ResumeContentForm";
 
 const ResumeUpload = () => {
   const [resumeDetails, setResumeDetails] = useState("");

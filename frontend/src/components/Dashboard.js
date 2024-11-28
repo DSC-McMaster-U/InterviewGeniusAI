@@ -1,32 +1,70 @@
-import React, { useEffect, useState } from 'react';
-import UserInfo from './components/UserInfo';  
+import React, { useState, useEffect } from 'react';
+import { submitUserInput, fetchUserData } from '../api'; // Import backend-related functions
+import UserInfo from './UserInfo'; // Ensure the UserInfo component is imported
 
-function Dashboard() {
-    const [userData, setUserData] = useState(null);
+const Dashboard = () => {
+  const [inputText, setInputText] = useState('');
+  const [response, setResponse] = useState(null);
+  const [userData, setUserData] = useState(null); // State to hold user data
+  const [loading, setLoading] = useState(true); // Loading state for user data
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = {
-                name: 'John Doe',
-                role: 'Admin',
-                lastLogin: '2024-11-24',
-            };
-            setUserData(data);  // Set user data in state
-        };
-        fetchData();
-     }, []);  // Empty dependency array makes sure it runs once when component mounts
+  // Fetch user data on component mount
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const data = await fetchUserData(); // Fetch user data from API
+        setUserData(data);
+      } catch (error) {
+        console.error('Failed to fetch user data:', error);
+      } finally {
+        setLoading(false); // Stop loading after attempt
+      }
+    };
 
-    return (
-        <div>
-            <h2>Dashboard</h2>
-            {/* If userData exists, pass it to UserInfo component */}
-            {userData ? (
-                <UserInfo userData={userData} />
-            ) : (
-                <p>Loading user data...</p>  
-            )}
-        </div>
-    );
-}
+    getUserData();
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const userInput = { text: inputText };
+
+    try {
+      const result = await submitUserInput(userInput);
+      setResponse(result); // Handle response from the backend
+    } catch (error) {
+      console.error('Submission failed:', error);
+    }
+  };
+
+  return (
+    <div>
+      <h2>Dashboard</h2>
+
+      {/* User Input Form */}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          placeholder="Enter some text"
+        />
+        <button type="submit">Submit</button>
+      </form>
+
+      {/* Display response from the backend */}
+      {response && <p>Response: {response}</p>}
+
+      {/* Display user data or loading state */}
+      {loading ? (
+        <p>Loading user data...</p>
+      ) : userData ? (
+        <UserInfo userData={userData} />
+      ) : (
+        <p>No user data available.</p>
+      )}
+    </div>
+  );
+};
 
 export default Dashboard;

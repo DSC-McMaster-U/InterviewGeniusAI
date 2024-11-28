@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { submitUserInput } from './api';
-import InterviewForm from './InterviewForm';
+import { submitUserInput } from '../api';
+import InterviewForm from './interviewForm';
 
 const InterviewSimulation = () => {
   const [response, setResponse] = useState(null);

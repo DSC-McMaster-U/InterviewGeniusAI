@@ -23,6 +23,3 @@ const InterviewForm = ({ onSubmit }) => {
 };
 
 export default InterviewForm;
-
-
-
