@@ -17,22 +17,17 @@ const Dashboard = () => {
     }
   };
 
-  return (
-    <div>
-      <h1>Dashboard</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          placeholder="Enter your text"
-          required
-        />
-        <button type="submit">Submit</button>
-      </form>
-      {response && <p>Response from backend: {JSON.stringify(response)}</p>}
-    </div>
-  );
-};
+    return (
+        <div>
+            <h2>Dashboard</h2>
+            {/* If userData exists, pass it to UserInfo component */}
+            {userData ? (
+                <UserInfo userData={userData} />
+            ) : (
+                <p>Loading user data...</p>  
+            )}
+        </div>
+    );
+}
 
 export default Dashboard;
