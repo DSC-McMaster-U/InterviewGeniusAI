@@ -2,7 +2,7 @@ To set up the project, follow these steps:
 
 1. Change directory to the frontend folder:
     ```sh
-    cd frontend/interview-ai
+    cd frontend
     ```
 
 2. Install the necessary dependencies:
