@@ -16,7 +16,8 @@ const Authentication = () => {
    */
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
-    
+   
+
     try {
       // Call API service to send username and password
       const response = await submitUserInput({ username, password });

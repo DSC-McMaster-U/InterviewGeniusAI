@@ -10,9 +10,12 @@ const AuthenticationForm = ({
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
-    if (onSubmit) {
-      onSubmit(); // Invoke the provided onSubmit callback
-    }
+    
+    // !!! This code causes runtime errors!!!
+    // if (onSubmit) {
+    //   onSubmit(); // Invoke the provided onSubmit callback 
+    // }
+    
   };
 
   return (
